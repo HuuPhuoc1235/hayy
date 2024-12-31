@@ -118,6 +118,15 @@ body {
     border-radius: 50%; /* Circular design */
     opacity: 0.6; /* Slight transparency for a soft effect */
 }
+.hand-pointer {
+    position: absolute;
+    width: 50px; /* Kích thước dấu tay */
+    height: auto;
+    top: -60px; /* Điều chỉnh vị trí dấu tay phía trên bao lì xì */
+    left: 50%;
+    transform: translateX(-50%);
+    animation: handBounce 1.5s infinite; /* Hiệu ứng nhún nhảy */
+}
 
 /* Bounce Keyframe Animation */
 @keyframes bounce {
@@ -135,6 +144,14 @@ body {
     }
     100% {
         transform: translateY(0);
+    }
+}
+@keyframes handBounce {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, -10px);
     }
 }
 
@@ -156,7 +173,7 @@ body {
 }
 
 .message-box h2 {
-    font-size: 2.5em;  /* Larger size */
+    font-size: 3em;  /* Larger size */
     color: #ff4d4d;
     font-weight: bold;
     font-style: italic;  /* Italic text */
@@ -165,10 +182,9 @@ body {
 }
 
 .message-box p {
-    font-size: 1.5em;
-    margin-top: 15px;
-    font-weight: normal;
+    font-size: 1.8em; /* Larger text */
     font-style: italic;  /* Italic text */
+    margin-top: 15px;
     opacity: 0;
     animation: fadeInText 3s forwards;
     animation-delay: 1s;
@@ -188,20 +204,9 @@ body {
 
 #closeMessageBox:hover {
     background-color: #ff3333;
+    color: #fff;
 }
 
-/* Keyframes for gradual text fade-in animation */
-@keyframes fadeInText {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Class for gradual fading effect */
-.fadeIn {
-    opacity: 0;
-    animation: fadeInText 3s forwards;
+#closeMessageBox::after {
+    content: 'Đóng';
 }
